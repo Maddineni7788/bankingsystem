@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Bank Report</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #f8f9fa; /* Bootstrap default background color */
+            padding: 20px; /* Add padding for better spacing */
+        }
+
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto; /* Add horizontal scroll for small screens */
+        }
+
+        table {
+            background-color: #ffffff; /* White background for the table */
+        }
+
+        th, td {
+            text-align: center; /* Center align table content */
+        }
+
+        h1, h2 {
+            color: #007bff; /* Bootstrap primary color */
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.2rem; /* Larger font size for paragraphs */
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Bank Transaction Report</h1>
+                <div class="table-container">
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">S.NO</th>
+                                <th scope="col">DATE</th>
+                                <th scope="col">ACCOUNT NUMBER</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Deposit/Withdrawal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in d %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ i.date }}</td>
+                                    <td>{{ i.account_number }}</td>
+                                    <td>{{ i.deposit_amount }}</td>
+                                    <td>Deposit</td>
+                                </tr>
+                            {% endfor %}
+
+                            {% for i in w %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ i.date }}</td>
+                                    <td>{{ i.account_number }}</td>
+                                    <td>{{ i.withdrawal_amount }}</td>
+                                    <td>Withdrawal</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Total Deposits: {{ total_deposits }}</h2>
+                <h2>Total Withdrawals: {{ total_withdrawals }}</h2>
+
+                <div class="mt-4">
+                    <h2 class="text-center">Report of Bank Amount:</h2>
+                    <p class="text-center">Actual Bank Currency: {{ actual_amount }}</p>
+                    <p class="text-center">Deposited Amount: {{ amount }}</p>
+                    <p class="text-center">Added Amount in Bank: {{ added_amount }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!-- Stylish HTML form with background image -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Form</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://www.livelaw.in/h-upload/2020/02/11/750x450_370090-cheque.jpg'); /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transaction Form</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        
+        <label style="color:black" for="Date">Date:</label>
+        <input type="date" id="Date" name="date" required>
+
+        <label style="color:black" for="Bankaccount">Bank Account:</label>
+        <select id="Bankaccount" name="bank_account" required>
+            {% for account in bank_accounts %}
+                <option value="{{ account.id }}">{{ account }}</option>
+            {% endfor %}
+        </select>
+
+        <label style="color:black" for="Bankaccount">Trasaction:</label>
+        <select id="Status" name="transaction_type" required>
+            <option value="pending">deposit</option>
+            <option value="withdrawal">withdrawal</option>
+        </select>
+
+
+        <label style="color:black" for="Status">Status:</label>
+        <select id="Status" name="status" required>
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+            <option value="failed">Failed</option>
+        </select>
+
+
+        <label style="color:black"  for="Reference">Account number:</label>
+        <input type="text" id="Reference" name="reference_number" required>
+
+        <label style="color:black" for="Amount">Amount:</label>
+        <input type="number" id="Amount" name="amount" required>
+
+        <label style="color:black" for="Currency">Currency:</label>
+        <select id="Bankaccount" name="currency">
+                <option value="{{ account.id }}">INR</option>
+        </select>
+
+        <button type="submit"></button>
+    </form>
+</body>
+</html>

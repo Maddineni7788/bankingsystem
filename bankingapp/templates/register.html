@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <style>
+        body {
+            background-image: url(https://alliancex.org/shield/wp-content/uploads/2021/01/register-scaled.jpg);
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            overflow-y: auto; /* Enable vertical scrolling */
+            max-height: 80vh; /* Set a maximum height for the form */
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input,
+        select,
+        textarea {
+            width: calc(100% - 20px); /* Adjusted width for padding */
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>User Registration Form</h2>
+<form action=""method="POST">
+    {% csrf_token %}
+
+
+    <section>
+        <label for="accountholder">Account Holder</label>
+        <input type="text" id="accountholder" name="username" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </section>
+
+    <section>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="confirm-password">Re-enter Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+    </section>
+
+    <section>
+        <label for="accountnumber">Account Number:</label>
+        <input type="number" id="accountnumber" name="accountnumber" required>
+
+        <label for="fathername">Father's Name:</label>
+        <input type="text" id="fathername" name="fathername" required>
+    </section>
+
+    <section>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+    </section>
+
+    <section>
+        <label for="phonenumber">Phone Number:</label>
+        <input type="tel" id="phonenumber" name="phonenumber" required>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+    </section>
+
+    <section>
+        <label for="pincode">Pincode:</label>
+        <input type="number" id="pincode" name="pincode" required>
+    </section>
+
+    <button type="submit">Submit</button>
+</form>
+</div>
+
+</body>
+</html>

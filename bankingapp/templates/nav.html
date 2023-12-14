@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="BANKMGMT">BANK</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Use ml-auto to push buttons to the right -->
+      <ul class="navbar-nav ml-auto">
+       
+        <!-- Check if the user is not authenticated -->
+        {% if not user.is_authenticated %}
+        <li class="nav-item">
+            <a href="{% url 'bankingapp:create_transaction' %}" class="nav-link"><button class="btn btn-success">Transaction Form</button></a>
+          </li> 
+        <a href="{% url 'bankingapp:login' %}" class="nav-link"><button class="btn btn-success">Cashier Login</button></a>
+        <a href="{% url 'bankingapp:register' %}" class="nav-link"><button class="btn btn-success">Cashier Register</button></a>
+        {% else %}
+        <a href="{% url 'bankingapp:logout' %}" class="nav-link"><button class="btn btn-success">Cashier Logout</button></a>
+        {% endif %}
+
+    
+
+
+      </ul>
+    </div>
+  </nav>
